@@ -9,6 +9,18 @@
   <body>
     <h2>JavaScript Course</h2>
 
-    <script src="./exercise.js"></script>
+    <button onclick="counter1.increase()">Increase</button>
+    <button onclick="counter1.decrease()">Decrease</button>
+    <hr />
+
+    <button onclick="reset()">RESET</button>
+
+    <script>
+      function reset() {
+        counter = 0
+      }
+    </script>
+
+    <script src="./index.js"></script>
   </body>
 </html>
