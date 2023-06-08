@@ -1,256 +1,183 @@
-// Pass by reference
-// #ADF214
-var a = { value: 10 }
+// Shallow cloning
+// Deep cloning
 
-function func (b) {
-  b.value++
-  console.log(b)
-}
-
-func(a)
-
-console.log(a)
-// // Pass by value
-// var a = 20
-
-// function func (b) {
-//   b++
-//   console.log(b)
+// var person = {
+//   name: 'Ali',
+//   family: 'Mousavi',
+//   age: 33,
+//   gender: true,
+//   friends: undefined,
+//   getFullName: function () {
+//     return this.name + ' ' + this.family
+//   },
+//   birthDay: new Date()
 // }
 
-// func(a)
+// console.log(person)
+// console.log(typeof person)
+// console.log(person.getFullName())
+// console.log(person.birthDay)
 
-// console.log(a)
+// var jsonPerson = JSON.stringify(person)
 
-// function useState (defaultValue) {
-//   var value = defaultValue
+// console.log(jsonPerson)
+// console.log(typeof jsonPerson)
 
-//   function setValue (newValue) {
-//     value = newValue
-//     console.log(value)
-//   }
+// var newPerson = JSON.parse(jsonPerson)
 
-//   return [value, setValue]
+// console.log(newPerson)
+
+// console.log(newPerson === person)
+
+// var obj1 = {
+//   a: 10,
+//   b: 60
 // }
 
-// var arr = useState(10)
+// // var obj2 = obj1
 
-// var value = arr[0]
-// console.log(value)
-
-// var setValue = arr[1]
-
-// setValue(20)
-
-// setValue(30)
-
-// var counter1 = (function () {
-//   var counter = 1
-
-//   function increase () {
-//     counter++
-//     console.log(counter)
-//   }
-
-//   function decrease () {
-//     counter--
-//     console.log(counter)
-//   }
-
-//   return {
-//     increase,
-//     decrease
-//   }
-// })()
-
-// console.log(counter1)
-
-// var counter1 = Counter()
-
-// console.log(counter1)
-
-// function func (a) {
-//   return function (b) {
-//     return function (c) {
-//       return a + b + c
-//     }
+// // AB21FD
+// var obj3 = {
+//   b: 50,
+//   // FCA124
+//   c: {
+//     d: 20
 //   }
 // }
 
-// var sum5 = func(5)
+// var obj2 = {}
+// var obj4 = Object.assign(obj2, obj3, obj1)
 
-// console.log(sum5)
+// var obj2 = Object.assign({}, obj3, obj1)
 
-// var sum20 = sum5(15)
+// var obj2 = JSON.parse(JSON.stringify(obj3))
 
-// console.log(sum20)
+// console.log(obj2 === obj4)
 
-// console.log(sum20(5))
-// console.log(sum20(15))
-// console.log(sum20(1))
+// obj2.a = 20
+// obj2.c.d = 90
 
-// console.log(sum5(6)(4))
-// console.log(sum5(16)(4))
+// console.log(obj2 === obj3) // false
+// console.log(obj2.c === obj3.c) // true
 
-// console.log(func(2)(6)(10))
+// console.log(obj3)
+// console.log(obj2)
 
-// console.log(func(5)(7)(9))
+// var numbers = [4, 2, 3, 7, 11, 2, 6]
 
-// function func () {
-//   // #AD21FA
-//   var i
-//   for (i = 0; i < 5; i++) {
-//     setTimeout(function () {
-//       console.log(i)
-//     }, 1000)
+// var max = Math.max.apply(null, numbers)
+// // var max = Math.max(4, 2, 3, 7, 11, 2, 6)
+
+// console.log(max)
+
+// var firstName = 'Sasan',
+//   lastName = 'Sharifian'
+
+// function welcome (greeting1, greeting2) {
+//   console.log(this)
+//   console.log(greeting1, greeting2, this.firstName, this.lastName)
+// }
+
+// var setareh = {
+//   firstName: 'Setareh',
+//   lastName: 'Sharifi'
+// }
+
+// welcome('Hi')
+
+// welcome.call(setareh, 'Hello', 'Bye')
+// welcome.apply(setareh, ['Hello', 'Bye'])
+// var newWelcome = welcome.bind(setareh)
+
+// console.log(newWelcome)
+
+// newWelcome('salam', 'khodahafez')
+// welcome()
+
+// var newWelcome2 = newWelcome.bind({ firstName: 'Ali', lastName: 'Mousavi' }) // Not effect
+
+// newWelcome2()
+
+// var firstName = 'Ali'
+
+// function printName () {
+//   console.log(this.firstName)
+//   console.log(this)
+// }
+
+// var mahsa = {
+//   firstName: 'Mahsa',
+//   printName
+// }
+
+// var mina = {
+//   firstName: 'Mina',
+//   printName
+// }
+
+// mina.printName()
+
+// mahsa.printName()
+
+// printName()
+
+// var num1 = new Number(12)
+
+// console.log(typeof num1)
+// console.log(num1) // object
+// console.log(+num1) // 12
+// console.log(num1 == 12) // true
+// console.log(num1 === 12) // false
+
+// var firstName = 'Ali'
+
+// function Person (name) {
+//   // this.firstName = name
+
+//   console.log(this)
+// }
+
+// new Person('Kasra')
+
+// Person('Poyan')
+
+// var mahsa = {
+//   name: 'Mahsa',
+//   family: 'Ekhtiari',
+//   age: 27,
+//   getFullName: function () {
+//     console.log(mahsa === this)
+//     return this.name + ' ' + this.family
 //   }
 // }
 
-// func()
+// console.log(mahsa.getFullName())
 
-// var i = 1
+// function Person (name, family, age) {
+//   this.name = name
+//   this.family = family
+//   this.age = age
 
-// var intervalId = setInterval(function () {
-//   console.log(i++)
-// }, 1000)
-
-// console.log('id', intervalId)
-
-// setTimeout(function () {
-//   clearInterval(intervalId)
-// }, 10000)
-
-// console.log(1)
-
-// setTimeout(function () {
-//   console.log('salam')
-// }, 1000)
-
-// console.log(2)
-
-// setTimeout(function () {
-//   console.log('ali')
-// }, 2000)
-
-// var a = 10
-
-// var a = 20
-
-// console.log(a)
-
-// func()
-
-// function func () {
-//   console.log('salam')
-// }
-
-// var a
-
-// console.log(a)
-
-// a = 20
-
-// console.log((a = 20))
-
-// var a = 10
-// window.a3 = 40
-
-// function func () {
-//   a1 = 20
-//   window.a2 = 30
-// }
-
-// func()
-
-// console.log(a1)
-// console.log(a2)
-
-// var a = 20
-
-// window.alert('salam')
-
-// console.log(a)
-// console.log(window.a)
-// // #21DFA1
-// var a = 10
-
-// function func () {
-//   var a = 20
-
-//   console.log(a)
-
-//   function func2 () {
-//     console.log(a)
-//     var b = 12
+//   this.getFullName = function () {
+//     return this.name + ' ' + this.family
 //   }
-
-//   func2()
-
-//   console.log(b)
 // }
 
-// func()
+// var mina = new Person('Mina', 'Mirzahoseinian', 30)
 
-// console.log(a)
+// console.log(mina.getFullName())
 
-// function factorial (n) {
-//   return n === 1 ? 1 : n * factorial(n - 1)
-// }
+// var haniye = new Person('Haniye', 'RostamTash', 39)
 
-// console.log(factorial(5))
+// console.log(haniye.getFullName())
 
-// 5! = 5 * 4!
-// 4! = 4 * 3!
-// 3! = 3 * 2!
-// 2! = 2 * 1!
-// 1! = 1
+// console.log(haniye)
 
-// function factorial (n) {
-//   var result = n
+// console.log(haniye instanceof Person)
+// console.log({} instanceof Person)
 
-//   for (var i = n - 1; i > 1; i--) {
-//     result *= i
-//   }
-
-//   return result
-// }
-
-// console.log(factorial(5))
-
-// Stack => Last In First Out => LIFO
-// Queue => First In First Out => FIFO
-
-// function func () {
-//   func()
-// }
-
-// func()
-
-// 5! = 5 * 4!
-// 4! = 4 * 3!
-// 3! = 3 * 2!
-// 2! = 2 * 1!
-// 1! = 1
-
-// 5! = 5 * 4 * 3 * 2 * 1
-// 4! = 4 * 3 * 2 * 1
-// 3! = 3 * 2 * 1
-// 2! = 2 * 1
-// 1! = 1
-
-// function sum () {
-//   console.log(arguments)
-
-//   var result = 0
-
-//   for (var i = 0; i < arguments.length; i++) {
-//     result = result + arguments[i]
-//   }
-
-//   return result
-// }
-
-// // console.log(sum(5, 7))
-// // console.log(sum(5, 7, 41))
-// // console.log(sum(5, 7, 41, 4, 5, 8))
-// console.log(sum())
+// snack_case_naming
+// camelCaseNaming
+// PascalCaseNaming
+// UPPER_CASE_NAMING
+// kebab-case-naming
