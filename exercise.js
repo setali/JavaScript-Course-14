@@ -10,6 +10,7 @@
 
 function power (a, b) {
   return b === 1 ? a : a * power(a, b - 1)
+  return b === 0 ? 1 : a * power(a, b - 1)
 }
 
 // 2 ** 3 => 2 * 2 ** 2
