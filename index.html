@@ -9,10 +9,23 @@
   <body>
     <h2>JavaScript Course</h2>
 
-    <button id="action">get User</button>
-
-    <div id="data"></div>
-
     <script src="./index.js"></script>
+
+    <script>
+      try {
+        slideshow()
+        // slideshow(['https://ali.com/ax1.png', 'https://ali.com/ax2.png'])
+      } catch (error) {
+        if (error instanceof ReferenceError) {
+          console.log('===> ReferenceError')
+        }
+        console.log(error.message)
+        console.log(error.name)
+      } finally {
+        console.log('Finally')
+      }
+
+      console.log('ali')
+    </script>
   </body>
 </html>
