@@ -1,303 +1,341 @@
-function slideshow (slides) {
-  console.log(slides)
-
-  if (!Array.isArray(slides)) {
-    // throw new Error('Slide must be an array')
-    const err = Error('Slide must be an array')
-    console.log(err)
-    console.log(typeof err)
-    console.log(err.message)
-    console.log(err.name)
-
-    console.log(a)
-
-    throw err
-  }
-
-  console.log('Function continue')
-}
-
-// console.log('1')
-
-// console.log(a)
-
-// console.log('2')
-
-// function func (a, b, c, ...args) {
-//   console.log(a, b, c)
-//   console.log(args)
+// class Point {
+//   constructor (x, y) {
+//     this.x = x
+//     this.y = y
+//   }
+//   // static distance (a, b) {
+//   //   const dx = a.x - b.x
+//   //   const dy = a.y - b.y
+//   //   return Math.hypot(dx, dy)
+//   // }
 // }
 
-// const arr1 = [1, 2, 3]
-// const arr2 = [4, 5, 6]
+// Point.distance = function (a, b) {
+//   const dx = a.x - b.x
+//   const dy = a.y - b.y
 
-// func(...arr1, ...arr2)
-
-// let a = 1,
-//   b = 2
-
-// ;[b, a] = [a, b]
-
-// console.log(a, b)
-// const arr = [1, 2]
-
-// const [aaa, b, c = 'ali', ...rest] = arr
-
-// console.log(aaa, b, c, rest)
-
-// const person = {
-//   firstName: 'Ali',
-//   lastName: 'Mousavi',
-//   age: 33,
-//   family: { father: 'Mohammad', mother: 'Hajar' }
+//   console.log(this)
+//   return Math.hypot(dx, dy)
 // }
 
-// const {
-//   firstName: myFirstName,
-//   lastName,
-//   gender: myGender = 'male',
-//   family: { father: myFatherName },
-//   ...rest
-// } = person
+// const p1 = new Point(5, 5)
+// const p2 = new Point(10, 10)
+// p1.distance //undefined
+// p2.distance //undefined
+// console.log(p1.distance)
+// console.log(Point.distance(p1, p2))
 
-// // const firstName = person.firstName
-// // const lastName = person.lastName
-// // const gender = person.gender ?? 'male'
+// class Animal {
+//   static ZOO_NAME = 'Eram'
 
-// console.log(myFirstName, lastName, myGender, myFatherName)
-// console.log(rest)
+//   constructor (type) {
+//     this.type = type
+//   }
 
-// const arr = [...[5, 6, 'af']]
-
-// console.log(typeof ...[5, 6, 'af']) // error
-
-// const sort = (a, b, ...args) => {
-//   console.log(a, b, args)
+//   eat () {
+//     console.log('HUM HUM')
+//   }
 // }
 
-// sort(2, 7, 3, 9)
+// class Cat extends Animal {
+//   constructor (breed) {
+//     super('CAT')
 
-// const arr = ['ali', 'eli', 'qoli']
+//     this.breed = breed
+//   }
 
-// const obj = { ...arr }
+//   speak () {
+//     console.log('MIU MIU')
+//   }
 
-// console.log(obj)
-
-// const arr2 = [...obj]
-
-// console.log(arr2)
-
-// const numbers = [4, 5, 12, 9, 7]
-
-// const obj = { name: 'ali' }
-
-// const str = 'salam'
-
-// console.log(Math.max(...numbers))
-
-// const obj = { name: 'Ali' }
-
-// const obj2 = { family: 'Mosavi', name: 'Hasan' }
-
-// const newObj = { ...obj2, ...obj, age: 33, name: 'Qoli', a: { b: 20 } }
-
-// console.log(newObj)
-
-// const obj4 = { ...newObj }
-
-// console.log(obj4)
-
-// obj4.a.b = 50
-
-// console.log(obj4 === newObj)
-
-// const arr = [3, 4, 5]
-
-// const newArr = [1, 2, 3, ...arr, 6, 7, 8]
-
-// console.log(newArr)
-
-// function Func () {
-//   console.log(new.target)
+//   eat () {
+//     super.eat()
+//     console.log('HIM HIM')
+//   }
 // }
 
-// new Func()
+// class DSH extends Cat {
+//   constructor (name, color) {
+//     super('DSH')
+//     this.name = name
+//     this.color = color
+//   }
 
-// function func () {
-//   console.log('===>', this)
-//   return {
-//     name: 'Hasan',
-//     normalFunc: function () {
-//       console.log(this)
-//     },
-//     arrowFunc: () => {
-//       console.log(this)
+//   attack () {
+//     console.log('ATTACK')
+//   }
+// }
+
+// const pishoo = new DSH('Pishoo', 'gray')
+
+// console.log(pishoo instanceof DSH)
+// console.log(pishoo instanceof Cat)
+// console.log(pishoo instanceof Animal)
+// console.log(pishoo instanceof Object)
+
+// console.log(pishoo)
+
+// pishoo.eat()
+
+// pishoo.speak()
+
+// pishoo.attack()
+
+// console.log(DSH.ZOO_NAME)
+
+// console.log(pishoo.toString())
+
+// const cat = new Cat('DSH')
+
+// console.log(cat)
+
+// cat.speak()
+// cat.eat()
+
+// const animal = new Animal('CAT')
+
+// console.log(animal)
+// animal.eat()
+
+// class Person {
+//   country = 'Iran'
+
+//   constructor (name, family) {
+//     this.name = name
+//     this.family = family
+//   }
+
+//   getFullName () {
+//     return this.name + ' ' + this.family
+//   }
+
+//   get fullName () {
+//     return this.name + ' ' + this.family
+//   }
+// }
+
+// const ali = new Person('Ali', 'Mousavi')
+
+// console.log(ali)
+
+// console.log(ali.getFullName())
+// console.log(ali.fullName)
+
+// async function request (url) {
+//   const response = await fetch(url)
+//   const data = await response.json()
+//   return data
+// }
+
+// request('https://jsonplacsseholder.ir/users/1')
+//   .then(data => console.log(data))
+//   .catch(err => console.log(err))
+
+// const delay = time => new Promise(resolve => setTimeout(() => resolve(), time))
+
+// async function func () {
+//   for (let i = 0; i < 5; i++) {
+//     await delay(1000)
+//     console.log(i)
+
+//     // setTimeout(() => console.log(i), 1000)
+//   }
+// }
+
+// console.log('a')
+// func()
+// console.log('b')
+
+// delay(1000, 'Ali').then(value => console.log(value))
+
+// async function func (a, b) {
+//   await delay(1000)
+//   return a ** b
+// }
+
+// func(2, 3).then(value => console.log(value))
+
+// async function prom (value) {
+//   // throw 'ali'
+//   return value ** 2
+// }
+
+// prom(2)
+//   .then(data => console.log(data))
+//   .catch(err => console.log(err))
+
+// function request (url, method = 'GET') {
+//   return new Promise((resolve, reject) => {
+//     const xhr = new XMLHttpRequest()
+
+//     xhr.open(method, url)
+
+//     xhr.send()
+
+//     xhr.onload = function () {
+//       return resolve({
+//         status: this.status,
+//         response: this.responseText,
+//         json: function () {
+//           return new Promise((resolve, reject) => {
+//             try {
+//               resolve(JSON.parse(this.response))
+//             } catch (err) {
+//               reject({
+//                 status: this.status,
+//                 response: err
+//               })
+//             }
+//           })
+//         }
+//       })
+//     }
+
+//     xhr.onerror = function () {
+//       return reject({
+//         status: this.status,
+//         response: 'Request Error'
+//       })
+//     }
+//   })
+// }
+
+// const url = 'https://jsonplaceholder.ir/users/1'
+// // const url = 'https://jsonplaceholder.ir'
+
+// const d = fetch(url)
+//   .then(response => response.json())
+//   .then(data => console.log(data))
+
+// console.log(d)
+
+// fetch(url)
+//   .then(response => response.json())
+//   .then(data => console.log(data))
+//   .catch(err => console.log(err))
+//   .finally(() => console.log('request finished'))
+
+// fetch(url)
+//   .then(response => response.json())
+//   .then(data => console.log(data))
+//   .catch(err => console.log(err))
+
+// request(url, 'GET', (err, data) => {
+//   if (err) {
+//     console.log(err)
+//   } else {
+//     console.log(data)
+//   }
+// })
+// function prom (a, b) {
+//   return new Promise((resolve, reject) => {
+//     if (Number.isNaN(a) || Number.isNaN(b)) {
+//       return reject(`You Mustn't use NaN value`)
+//       console.log('a')
+//     }
+
+//     const result = a ** b
+
+//     console.log('===>', result)
+//     return resolve(result)
+//     console.log('b')
+//   })
+// }
+
+// console.log(1)
+
+// prom(4, NaN)
+//   .then(value => console.log(value))
+//   .catch(err => console.log(err))
+//   .finally(() => console.log('finally'))
+
+// console.log(2)
+
+// console.log(1)
+
+// console.log(2 + 3)
+
+// setTimeout(() => {
+//   console.log(10)
+
+//   console.log(4 ** 4)
+// }, 0)
+
+// const prom = new Promise((resolve, reject) => {
+//   console.log(4)
+//   resolve(2 ** 3)
+// })
+
+// console.log(2)
+
+// console.log(prom)
+
+// prom.then(value => console.log(value))
+
+// console.log(3)
+
+// function recursiveDeepObjectCloning (obj) {
+//   for (var item in obj) {
+//     console.log(item)
+//     if (typeof obj[item] === 'object' && obj[item] !== null) {
+//       obj[item] = Object.assign({}, obj[item])
+//       recursiveDeepObjectCloning(obj[item])
 //     }
 //   }
 // }
 
-// const ali = {
-//   name: 'Ali',
-//   family: 'Mousavi'
-// }
+// const obj1 = { a: 10, b: { c: 20 }, d: { f: 50 } }
 
-// const obj = func.call(ali)
+// const obj2 = Object.assign({}, obj1)
 
-// obj.normalFunc()
-// obj.arrowFunc()
+// recursiveDeepObjectCloning(obj2)
 
-// const newObj = {
-//   name: 'Pouyan',
-//   norm: obj.normalFunc,
-//   arr: obj.arrowFunc
-// }
+// function createIncrement () {
+//   // #12ACDB
+//   let value = 0
 
-// console.log(newObj.norm === obj.normalFunc)
+//   return function counter () {
+//     value = value + 1
+//     console.log(value)
 
-// console.log('=============')
-// // newObj.norm()
-// obj.normalFunc()
+//     const message = `Current value is ${value}` //  Current value is 1
 
-// newObj.norm()
-// newObj.arr()
+//     function logger () {
+//       console.log(message)
+//     }
 
-// obj.normalFunc()
+//     function getValue () {
+//       return value
+//     }
 
-// const func = (a, a) => { // Error
-//   console.log(a)
-// }
-
-// func(10, 20)
-
-// const func = () => {
-// console.log(arguments)
-// }
-
-// func(1, 2)
-
-// const arr = [2, 3, 4, 5, 6]
-
-// const newArr = arr.map(el => el ** 2)
-
-// console.log(newArr)
-
-// const pow2 = a => a ** 2
-// // const pow = (a, b) => a ** b
-
-// console.log(pow2(2))
-
-// const sum = (a, b) => {
-//   return a + b
-// }
-
-// console.log(sum(2, 3))
-
-// console.log(
-//   `Hi ' " ${(function () {
-//     return 'salam'
-//   })()}`
-// )
-
-// const name = 'Ali',
-//   family = 'Mousavi'
-
-// console.log('My name is ' + name + ' \n' + family)
-
-// console.log(`My name is ${name}
-// ${family}`)
-
-// const arr = ['ali', 'eli']
-
-// arr[1] = 'qoli'
-
-// console.log(arr)
-
-// const obj = {
-//   name: 'Ali',
-//   family: 'Mousavi'
-// }
-
-// obj.name = 'Hasan'
-
-// obj = {
-//   name: 'Hasan',
-//   family: 'Mousavi'
-// }
-
-// console.log(obj)
-
-// const a = 10
-
-// a = 20 // Error
-
-// console.log(a)
-
-// function func () {
-//   var a = 10
-//   console.log(a)
-// }
-
-// func()
-// func()
-
-// function func () {
-//   // #FD12DC
-//   // let i
-//   for (const i = 0; i < 5; i++) {
-//     setTimeout(function () {
-//       console.log(i)
-//     }, 1000)
-//   }
-// }
-// function func () {
-//   for (var i = 0; i < 5; i++) {
-//     setTimeout(
-//       function (j) {
-//         console.log(j)
-//       },
-//       1000,
-//       i
-//     )
+//     return {
+//       logger,
+//       getValue
+//     }
 //   }
 // }
 
-// func()
+// const counter = createIncrement()
+// // value = 0
+// // func increment
 
-// function func () {
-//   let a = 10
+// const { logger, getValue } = counter()
+// // value = 1
+// // message1 = 'Current value is 1'
 
-//   {
-//     var a = 20
-//     console.log(a)
-//   }
+// const { logger: logger2 } = counter()
+// // value = 2
+// // message2 = 'Current value is 2'
+// // func logger2
+// // func getValue2
 
-//   console.log(a)
-// }
+// counter()
+// // value = 3
+// // message3 = 'Current value is 3'
+// // func logger3
+// // func getValue3
 
-// func()
+// logger()
+// console.log(getValue())
 
-// let family = 'mousavi'
-
-// function func () {
-//   console.log(a)
-
-//   let a = 20
-
-//   console.log(a)
-
-//   if (true) {
-//     let b = 10
-
-//     console.log(b)
-//   }
-
-//   let c = {
-//     name: 'Ali'
-//   }
-
-//   // console.log(b)
-// }
-
-// func()
-
-// // console.log(a)
+// logger2()
