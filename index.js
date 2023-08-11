@@ -1,341 +1,103 @@
-// class Point {
-//   constructor (x, y) {
-//     this.x = x
-//     this.y = y
-//   }
-//   // static distance (a, b) {
-//   //   const dx = a.x - b.x
-//   //   const dy = a.y - b.y
-//   //   return Math.hypot(dx, dy)
-//   // }
-// }
+// 2 + 4 // exp
+// const a = 10 // statement
 
-// Point.distance = function (a, b) {
-//   const dx = a.x - b.x
-//   const dy = a.y - b.y
 
-//   console.log(this)
-//   return Math.hypot(dx, dy)
-// }
 
-// const p1 = new Point(5, 5)
-// const p2 = new Point(10, 10)
-// p1.distance //undefined
-// p2.distance //undefined
-// console.log(p1.distance)
-// console.log(Point.distance(p1, p2))
-
-// class Animal {
-//   static ZOO_NAME = 'Eram'
-
-//   constructor (type) {
-//     this.type = type
-//   }
-
-//   eat () {
-//     console.log('HUM HUM')
-//   }
-// }
-
-// class Cat extends Animal {
-//   constructor (breed) {
-//     super('CAT')
-
-//     this.breed = breed
-//   }
-
-//   speak () {
-//     console.log('MIU MIU')
-//   }
-
-//   eat () {
-//     super.eat()
-//     console.log('HIM HIM')
-//   }
-// }
-
-// class DSH extends Cat {
-//   constructor (name, color) {
-//     super('DSH')
+// class Book {
+//   constructor (name, author) {
 //     this.name = name
-//     this.color = color
+//     this.author = author
 //   }
 
-//   attack () {
-//     console.log('ATTACK')
+//   // `instance` is what's being compared
+//   static [Symbol.hasInstance] (instance) {
+//     // `instance` is a `Book` if
+//     // it has a name and author
+//     return instance.name && instance.author
 //   }
 // }
 
-// const pishoo = new DSH('Pishoo', 'gray')
+// // these are the fields we need
+// const name = 'Harry Potter'
+// const author = 'J.K. Rowling'
 
-// console.log(pishoo instanceof DSH)
-// console.log(pishoo instanceof Cat)
-// console.log(pishoo instanceof Animal)
-// console.log(pishoo instanceof Object)
+// console.log(new Book(name, author) instanceof Book) // true
+// console.log({ name, author } instanceof Book) // true
 
-// console.log(pishoo)
+// const iterable1 = {
+//   name: 'Ali',
+//   family: 'Mousavi',
+//   age: 33
+// }
 
-// pishoo.eat()
+// iterable1[Symbol.iterator] = function* () {
+//   for (const key in this) {
+//     yield this[key]
+//   }
+// }
 
-// pishoo.speak()
+// // console.log([...iterable1])
 
-// pishoo.attack()
-
-// console.log(DSH.ZOO_NAME)
-
-// console.log(pishoo.toString())
-
-// const cat = new Cat('DSH')
-
-// console.log(cat)
-
-// cat.speak()
-// cat.eat()
-
-// const animal = new Animal('CAT')
-
-// console.log(animal)
-// animal.eat()
+// for (const el of iterable1) {
+//   console.log(el)
+// }
 
 // class Person {
-//   country = 'Iran'
-
-//   constructor (name, family) {
-//     this.name = name
-//     this.family = family
-//   }
-
-//   getFullName () {
-//     return this.name + ' ' + this.family
-//   }
-
-//   get fullName () {
-//     return this.name + ' ' + this.family
-//   }
-// }
-
-// const ali = new Person('Ali', 'Mousavi')
-
-// console.log(ali)
-
-// console.log(ali.getFullName())
-// console.log(ali.fullName)
-
-// async function request (url) {
-//   const response = await fetch(url)
-//   const data = await response.json()
-//   return data
-// }
-
-// request('https://jsonplacsseholder.ir/users/1')
-//   .then(data => console.log(data))
-//   .catch(err => console.log(err))
-
-// const delay = time => new Promise(resolve => setTimeout(() => resolve(), time))
-
-// async function func () {
-//   for (let i = 0; i < 5; i++) {
-//     await delay(1000)
-//     console.log(i)
-
-//     // setTimeout(() => console.log(i), 1000)
-//   }
-// }
-
-// console.log('a')
-// func()
-// console.log('b')
-
-// delay(1000, 'Ali').then(value => console.log(value))
-
-// async function func (a, b) {
-//   await delay(1000)
-//   return a ** b
-// }
-
-// func(2, 3).then(value => console.log(value))
-
-// async function prom (value) {
-//   // throw 'ali'
-//   return value ** 2
-// }
-
-// prom(2)
-//   .then(data => console.log(data))
-//   .catch(err => console.log(err))
-
-// function request (url, method = 'GET') {
-//   return new Promise((resolve, reject) => {
-//     const xhr = new XMLHttpRequest()
-
-//     xhr.open(method, url)
-
-//     xhr.send()
-
-//     xhr.onload = function () {
-//       return resolve({
-//         status: this.status,
-//         response: this.responseText,
-//         json: function () {
-//           return new Promise((resolve, reject) => {
-//             try {
-//               resolve(JSON.parse(this.response))
-//             } catch (err) {
-//               reject({
-//                 status: this.status,
-//                 response: err
-//               })
-//             }
-//           })
-//         }
-//       })
+//   static [Symbol.hasInstance] (instance) {
+//     if (Array.isArray(instance)) {
+//       return true
 //     }
-
-//     xhr.onerror = function () {
-//       return reject({
-//         status: this.status,
-//         response: 'Request Error'
-//       })
+//     if (instance === 50) {
+//       return true
 //     }
-//   })
-// }
-
-// const url = 'https://jsonplaceholder.ir/users/1'
-// // const url = 'https://jsonplaceholder.ir'
-
-// const d = fetch(url)
-//   .then(response => response.json())
-//   .then(data => console.log(data))
-
-// console.log(d)
-
-// fetch(url)
-//   .then(response => response.json())
-//   .then(data => console.log(data))
-//   .catch(err => console.log(err))
-//   .finally(() => console.log('request finished'))
-
-// fetch(url)
-//   .then(response => response.json())
-//   .then(data => console.log(data))
-//   .catch(err => console.log(err))
-
-// request(url, 'GET', (err, data) => {
-//   if (err) {
-//     console.log(err)
-//   } else {
-//     console.log(data)
-//   }
-// })
-// function prom (a, b) {
-//   return new Promise((resolve, reject) => {
-//     if (Number.isNaN(a) || Number.isNaN(b)) {
-//       return reject(`You Mustn't use NaN value`)
-//       console.log('a')
-//     }
-
-//     const result = a ** b
-
-//     console.log('===>', result)
-//     return resolve(result)
-//     console.log('b')
-//   })
-// }
-
-// console.log(1)
-
-// prom(4, NaN)
-//   .then(value => console.log(value))
-//   .catch(err => console.log(err))
-//   .finally(() => console.log('finally'))
-
-// console.log(2)
-
-// console.log(1)
-
-// console.log(2 + 3)
-
-// setTimeout(() => {
-//   console.log(10)
-
-//   console.log(4 ** 4)
-// }, 0)
-
-// const prom = new Promise((resolve, reject) => {
-//   console.log(4)
-//   resolve(2 ** 3)
-// })
-
-// console.log(2)
-
-// console.log(prom)
-
-// prom.then(value => console.log(value))
-
-// console.log(3)
-
-// function recursiveDeepObjectCloning (obj) {
-//   for (var item in obj) {
-//     console.log(item)
-//     if (typeof obj[item] === 'object' && obj[item] !== null) {
-//       obj[item] = Object.assign({}, obj[item])
-//       recursiveDeepObjectCloning(obj[item])
+//     if (instance instanceof Person) {
+//         return true
 //     }
 //   }
 // }
 
-// const obj1 = { a: 10, b: { c: 20 }, d: { f: 50 } }
+// const p = new Person()
 
-// const obj2 = Object.assign({}, obj1)
+// console.log(p instanceof Person)
+// console.log(50 instanceof Person)
 
-// recursiveDeepObjectCloning(obj2)
-
-// function createIncrement () {
-//   // #12ACDB
-//   let value = 0
-
-//   return function counter () {
-//     value = value + 1
-//     console.log(value)
-
-//     const message = `Current value is ${value}` //  Current value is 1
-
-//     function logger () {
-//       console.log(message)
+// const obj = {
+//   name: 'Ali',
+//   family: 'Mousavi',
+//   age: 33,
+//   [Symbol.toPrimitive] (hint) {
+//     if (hint === 'number') {
+//       return this.age
 //     }
-
-//     function getValue () {
-//       return value
-//     }
-
-//     return {
-//       logger,
-//       getValue
+//     if (hint === 'string') {
+//       return `${this.name} ${this.family}`
 //     }
 //   }
 // }
 
-// const counter = createIncrement()
-// // value = 0
-// // func increment
+// console.log(+obj)
+// console.log(`${obj}`)
 
-// const { logger, getValue } = counter()
-// // value = 1
-// // message1 = 'Current value is 1'
+// const sym1 = Symbol('A')
 
-// const { logger: logger2 } = counter()
-// // value = 2
-// // message2 = 'Current value is 2'
-// // func logger2
-// // func getValue2
+// console.log(sym1)
 
-// counter()
-// // value = 3
-// // message3 = 'Current value is 3'
-// // func logger3
-// // func getValue3
+// const sym2 = Symbol('B')
 
-// logger()
-// console.log(getValue())
+// console.log(sym2)
 
-// logger2()
+// console.log(sym1 === sym2)
+
+// const obj = {
+//   name: 'Ali',
+//   family: 'Mousavi',
+//   [sym1]: 23
+// }
+
+// console.log(obj)
+
+// console.log(JSON.stringify(obj))
+
+// for (const key in obj) {
+//   console.log(key, obj[key])
+// }
